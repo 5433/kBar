@@ -1,9 +1,9 @@
-package com.example.elhamadamo.gotcha;
+package com.example.elhamadamo.gotcha_2;
 
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,7 +16,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Scanner;
 
-public class post_activity extends AppCompatActivity {
+public class PostActivity extends AppCompatActivity {
 
     EditText priceField;
     EditText nameField;
@@ -29,7 +29,7 @@ public class post_activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_post_activity);
+        setContentView(R.layout.activity_post);
         priceField = (EditText) findViewById(R.id.price);
         nameField = (EditText) findViewById(R.id.name);
         send = (Button) findViewById(R.id.send);
@@ -51,8 +51,8 @@ public class post_activity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... params) {
             try{
-                String data = "name="+URLEncoder.encode(name,"UTF-8")+"&price="+URLEncoder.encode(price,"UTF-8");
-                URL url = new URL("http://localhost/gotcha/create_p1.php");
+                String data = "name="+ URLEncoder.encode(name, "UTF-8")+"&price="+URLEncoder.encode(price,"UTF-8");
+                URL url = new URL("http://172.20.10.7/gotcha/create_p1.php");
                 con = (HttpURLConnection) url.openConnection();
                 con.setReadTimeout(15000);
                 con.setConnectTimeout(15000);
@@ -90,7 +90,7 @@ public class post_activity extends AppCompatActivity {
                 public void run() {
                     txt.setText(response);
                     if(response.contains("1")){
-                        Intent i = new Intent(getApplicationContext(),get_activity.class);
+                        Intent i = new Intent(getApplicationContext(),FrontDynamicActivity.class);
                         startActivity(i);
                         finish();
                     }

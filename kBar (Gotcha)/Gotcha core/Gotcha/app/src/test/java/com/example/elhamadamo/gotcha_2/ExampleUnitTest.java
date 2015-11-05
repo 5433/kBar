@@ -1,4 +1,4 @@
-package com.example.elhamadamo.gotcha;
+package com.example.elhamadamo.gotcha_2;
 
 import org.junit.Test;
 
